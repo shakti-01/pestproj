@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit&family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <!-- -- -->
+    {% load static %}
+    <link rel="stylesheet"  href="{% static  'styles/basestyles.css' %}">
+    {% if title %}
+        <title>Pest control - {{title}}</title>
+    {% else %}
+        <title>Pest Control</title>
+    {% endif %}
+</head>
+<body>
+    <ul class="nav">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><p title="currently signed in as..."> {{ user.username }} </p></li>
+        <li><i style="position: relative;top:10px;left:5px;color: white;" class="material-icons">face</i></li>
+        
+        {% else %}
+            <li><p title="You need to login before you can proceed">Login to continue</p></li>
+        {% endif %}
+    </ul>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <font size="5" color = "green">
+                <b>{{ message }}</b>
+            </font>
+        {% endfor %}
+    {% endif %}
+    <section class="content">
+    {% block content %} {% endblock content %}
+    </section>
+    <!-- scripts -->
+    <script src="{% static 'js/basejs.js' %}"></script>
+</body>
+</html>
