@@ -2,7 +2,7 @@ body{
     padding: 0;
     margin: 0;
     min-height: 100vh;
-    background-color: white;
+    background-image: linear-gradient(30deg, rgb(24, 88, 62),rgb(160, 255, 216), rgb(255, 255, 255));
     font-family: sans-serif;/* ubuntu inter kanit */
 }
 *{
@@ -14,10 +14,10 @@ body{
     border: 0.1em rgb(36, 126, 88) solid;
     border-radius: 0.5em;
     box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.4);
-    padding: 0 1vw;
+    padding: 0 2vw;
     background-color: rgb(36, 126, 88);
     text-align:left;
-    max-width: max(300px,55vw);
+    max-width: max(330px,45vw);
     margin: auto auto;
     margin-top:1.5em;
 }
@@ -42,10 +42,17 @@ body{
 .cust-form input:focus{
     outline: none;
     border: none;
-    border-bottom: solid 2px rgb(0, 96, 64);
+    border-bottom: solid 2px white;
 }
+/* ---------------login form only--------------- */
+.login-form{
+    text-align: center;
+    max-width: max(300px,31vw);
+    padding: 2vh 0;
+}
+/* --------------login ends----------------- */
 .c-div{
-    max-width: max(300px,55vw);
+    max-width: max(300px,32vw);
     margin: auto auto;
 }
 .cust-p{
@@ -74,13 +81,14 @@ body{
     border: solid 1px rgb(0, 130, 87);
 }
 
-/* ----------------------- */
+/* ------------nav----------- */
 .nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    z-index: 10;
 }
 
 .nav li {

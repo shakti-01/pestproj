@@ -10,8 +10,9 @@
         z-index: -1;
     }
 </style>
-<form class="cust-form" action="" method="POST">
+<form class="cust-form login-form" action="" method="POST">
     {% csrf_token %}
+    <h2>Login</h2>
     {{ form.as_p }}
     <button class="cust-btn" type="submit">Log-in</button>
 </form>
