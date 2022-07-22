@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <!-- -- -->
     {% load static %}
-    <link rel="stylesheet"  href="{% static  'styles/basestyles.css' %}">
+    <link rel="stylesheet"  href="{% static  'login/styles/basestyles.css' %}">
     {% if title %}
         <title>Pest control - {{title}}</title>
     {% else %}
@@ -24,9 +24,31 @@
 <body>
     <ul class="nav">
         {% if user.is_authenticated %}
+        <li class="fleft"><a href="{% url 'home' %}">Home</a></li>
+        <li class="fleft"><a href="{% url 'pest' %}">Pest control</a></li>
+        <li class="fleft"><a href="{% url 'weed' %}">Weed control</a></li>
+        <li class="fleft"><a href="{% url 'aboutus' %}">About us</a></li>
+
+        <li class="fright"><a href="{% url 'logout' %}">Logout</a></li>
+        <li class="fright"><p title="currently signed in as..."> {{ user.username }} </p></li>
+        <li class="fright"><i style="position: relative;top:10px;left:5px;color: white;" class="material-icons">face</i></li>
+        
+        {% else %}
+            <li class="fright"><p title="You need to login before you can proceed">Login to continue</p></li>
+        {% endif %}
+    </ul>
+    <div class="sidebar_icon" onclick="toggleSidebar()">
+        <i class="material-icons" style="background-color:black;">dehaze</i>
+    </div>
+    <ul class="sidebar" id="sidebar">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'pest' %}">Pest control</a></li>
+        <li><a href="{% url 'weed' %}">Weed control</a></li>
+        <li><a href="{% url 'aboutus' %}">About us</a></li>
+
+        <li><p title="currently signed in as..."><i style="position: relative;top:5px;left:0px;color: white;" class="material-icons">face</i> {{ user.username }} </p></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
-        <li><p title="currently signed in as..."> {{ user.username }} </p></li>
-        <li><i style="position: relative;top:10px;left:5px;color: white;" class="material-icons">face</i></li>
         
         {% else %}
             <li><p title="You need to login before you can proceed">Login to continue</p></li>
@@ -35,15 +57,15 @@
     
     {% if messages %}
         {% for message in messages %}
-            <font size="5" color = "green">
+            <p color = "green">
                 <b>{{ message }}</b>
-            </font>
+            </p>
         {% endfor %}
     {% endif %}
     <section class="content">
     {% block content %} {% endblock content %}
     </section>
     <!-- scripts -->
-    <script src="{% static 'js/basejs.js' %}"></script>
+    <script src="{% static 'login/js/basejs.js' %}"></script>
 </body>
 </html>
